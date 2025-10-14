@@ -114,6 +114,7 @@ in
       #"popclip"                  # Text selection actions
       #"shortcat"                 # Keyboard navigation
       #"clop"                     # Image optimization
+      "applite"                   # Application launcher
 
       # --- COMMUNICATION ---
       "wechat"                    # Chinese instant messaging
