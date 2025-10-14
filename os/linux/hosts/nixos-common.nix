@@ -1,9 +1,9 @@
-{ pkgs, unstablePkgs, lib, inputs, stateVersion, ... }:
+{ pkgs, unstablePkgs, lib, inputs, stateVersion,constants, ... }:
 let
   inherit (inputs) nixpkgs nixpkgs-unstable;
 in
 {
-  time.timeZone = "America/New_York";
+  time.timeZone = constants.defaults.timezone;
   system.stateVersion = stateVersion;
 
   # home-manager = {

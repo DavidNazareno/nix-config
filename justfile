@@ -20,7 +20,7 @@ switch target_host=hostname: (build target_host)
   @echo "switching to new config for {{target_host}}"
   sudo ./result/sw/bin/darwin-rebuild switch --flake ".#{{target_host}}"
 
-### linux
+### linux (NixOS)
 # Build the NixOS configuration without switching to it
 [linux]
 build target_host=hostname flags="":
@@ -35,6 +35,20 @@ trace target_host=hostname: (build target_host "--show-trace")
 switch target_host=hostname:
   sudo nixos-rebuild switch --flake .#{{target_host}}
 
+### home-manager (Ubuntu/Linux with Nix)
+# Build Home Manager configuration without switching to it
+home-build user_host="davidnazareno@dnz-linux-lenovo" flags="":
+  @echo "Building Home Manager config for {{user_host}}..."
+  nix --extra-experimental-features 'nix-command flakes' build ".#homeConfigurations.{{user_host}}.activationPackage" {{flags}}
+
+# Build Home Manager config with the --show-trace flag set
+home-trace user_host="davidnazareno@dnz-linux-lenovo": (home-build user_host "--show-trace")
+
+# Build and switch to Home Manager configuration
+home-switch user_host="davidnazareno@dnz-linux-lenovo":
+  @echo "Switching to Home Manager config for {{user_host}}..."
+  home-manager switch --flake ".#{{user_host}}"
+
 ## colmena
 cbuild:
   colmena build
@@ -46,6 +60,11 @@ capply:
 update:
   nix flake update
 
+# Check flake configuration for errors
+check:
+  @echo "Checking flake configuration..."
+  nix flake check
+
 ## remote nix vm installation
 install IP:
   ssh -o "StrictHostKeyChecking no" nixos@{{IP}} "sudo bash -c '\
@@ -56,6 +75,15 @@ install IP:
     git clone https://github.com/ironicbadger/nix-config.git && \
     cd nix-config/lib/install && \
     sh install-nix.sh\"'"
+
+## ubuntu nix installation
+install-ubuntu:
+  @echo "Installing Nix and Home Manager on Ubuntu..."
+  @echo "Please follow the instructions in install-ubuntu-nix.md"
+  @echo "Or run the following commands manually:"
+  @echo "1. Install Nix: sh <(curl -L https://nixos.org/nix/install) --daemon"
+  @echo "2. Enable flakes: mkdir -p ~/.config/nix && echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf"
+  @echo "3. Clone this repo and run: home-manager switch --flake .#davidnazareno@dnz-linux-lenovo"
 
 
 # Garbage collect old OS generations and remove stale packages from the nix store

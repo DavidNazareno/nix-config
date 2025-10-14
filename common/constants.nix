@@ -10,8 +10,8 @@
 
   # Versiones del sistema
   versions = {
-    stateVersion = "24.05";
-    nixpkgsVersion = "24.11";
+    stateVersion = "25.05";
+    nixpkgsVersion = "25.05";
   };
 
   # Sistemas soportados

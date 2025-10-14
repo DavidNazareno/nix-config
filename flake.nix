@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
@@ -12,8 +12,8 @@
     homebrew-cask = { url = "github:homebrew/homebrew-cask"; flake = false; };
     homebrew-bundle = { url = "github:homebrew/homebrew-bundle"; flake = false; };
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs-darwin";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # sops-nix.url = "github:Mic92/sops-nix";
     # sops-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -38,8 +38,28 @@
         dnz-mac-mini = darwinLib.mkDarwin { hostname = "dnz-mac-mini"; };
       };
 
+      # Home Manager configuration for non-NixOS systems (Ubuntu with Nix)
+      homeConfigurations = {
+        # personal - Ubuntu with Nix
+        "davidnazareno@dnz-linux-lenovo" = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = inputs.nixpkgs.legacyPackages.${constants.systems.linux};
+          extraSpecialArgs = { 
+            inherit inputs constants; 
+            unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${constants.systems.linux};
+          };
+          modules = [
+            ./common/home/davidnazareno.nix
+            {
+              home.username = constants.user.username;
+              home.homeDirectory = "/home/${constants.user.username}";
+            }
+          ];
+        };
+      };
+
+      
       nixosConfigurations = {
-        # personal - Linux
+        # personal 
         dnz-linux-lenovo = linuxLib.mkNixOS { hostname = "dnz-linux-lenovo"; };
       };
 

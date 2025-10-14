@@ -2,19 +2,31 @@
 {
   system.defaults.dock = {
     persistent-apps = [
-      "/Applications/Google Chrome.app"
-      "/Applications/Firefox.app"
-      "/Applications/Telegram.app"
-      "/Applications/Signal.app"
+      # === BROWSERS ===
+      "/Applications/Arc.app"
+      
+      # === COMMUNICATION ===
       "/Applications/Discord.app"
-      "/Applications/Slack.app"
-      "/Applications/Ivory.app"
-      "/Applications/Obsidian.app"
-      "/Applications/Fantastical.app"
+      
+      # === PRODUCTIVITY ===
+      
+      # === DEVELOPMENT ===
       "/Applications/Visual Studio Code.app"
-      "/Applications/Spotify.app"
-      "/Applications/Plexamp.app"
+      "/Applications/Zed.app"
       "/Applications/Ghostty.app"
+      "/Applications/iTerm.app"
+      "/Applications/OrbStack.app"
+      "/Applications/DBeaver.app"
+      "/Applications/Medis 2.app"
+      "/Applications/DBngin.app"
+      
+      # === MEDIA ===
+      
+      # === UTILITIES ===
+      "/Applications/Bitwarden.app"
+      "/Applications/iStat Menus.app"
+      "/Applications/OmniDiskSweeper.app"
+      "/Applications/BalenaEtcher.app"
     ];
   };
 }
