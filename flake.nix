@@ -15,8 +15,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    # sops-nix.url = "github:Mic92/sops-nix";
+    # sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # disko.url = "github:nix-community/disko";
     # disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -24,32 +24,30 @@
     # vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
-  outputs = { ... }@inputs:
-    with inputs;
-    let
-      inherit (self) outputs;
-
-      stateVersion = "24.05";
-      libx = import ./lib { inherit inputs outputs stateVersion; };
-
-    in {
+  outputs = { self, nixpkgs, ... } @ inputs:
+  let
+    inherit (self) outputs;
+    constants = import ./common/constants.nix;
+    stateVersion = constants.versions.stateVersion;
+    darwinLib = import ./os/darwin/lib { inherit inputs outputs stateVersion; };
+    linuxLib = import ./os/linux/lib { inherit inputs outputs stateVersion; };
+  in {
 
       darwinConfigurations = {
-        # personal
-        nauvis = libx.mkDarwin { hostname = "nauvis"; };
-        mac-studio = libx.mkDarwin { hostname = "mac-studio"; };
-        mba15 = libx.mkDarwin { hostname = "mba15"; };
+        # personal - Apple
+        dnz-mac-mini = darwinLib.mkDarwin { hostname = "dnz-mac-mini"; };
+      };
 
-        # work
-        baldrick = libx.mkDarwin { hostname = "baldrick"; };
-        magrathea = libx.mkDarwin { hostname = "magrathea"; };
+      nixosConfigurations = {
+        # personal - Linux
+        dnz-linux-lenovo = linuxLib.mkNixOS { hostname = "dnz-linux-lenovo"; };
       };
 
       colmena = {
         meta = {
-          nixpkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
+          nixpkgs = import inputs.nixpkgs { system = constants.systems.linux; };
           specialArgs = {
-            inherit inputs outputs stateVersion self;
+            inherit inputs outputs stateVersion self constants;
           };
         };
 
@@ -59,12 +57,7 @@
           ];
         };
 
-        # wd
-        morphnix = import ./hosts/nixos/morphnix;
-        nvllama = import ./hosts/nixos/nvllama;
-
-        # test system
-        # yeager = nixosSystem "x86_64-linux" "yeager" "alex";
+        # No remote hosts configured
       };
 
     };
