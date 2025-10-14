@@ -175,6 +175,7 @@ in
       # "elgato-control-center"     # Elgato device control
       # "elgato-stream-deck"        # Stream Deck software
       "logitech-options"          # Logitech device software
+      "betterdisplay"
       
       # --- FONTS ---
       "font-fira-code"            # Fira Code font
