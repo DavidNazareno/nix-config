@@ -36,17 +36,17 @@ compinit
 source <(kubectl completion zsh)
 export KUBE_EDITOR="nvim"
 
-alias kc='kubectl'
-alias kcg='kubectl get'
-alias kcgpo='kubectl get pod'
+# alias kc='kubectl'
+# alias kcg='kubectl get'
+# alias kcgpo='kubectl get pod'
 
 , () {
   nix run nixpkgs#comma -- "$@"
 }
 
 eval "$(starship init zsh)"
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-alias claude="npx @anthropic-ai/claude-code@latest"
+#alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+#alias claude="npx @anthropic-ai/claude-code@latest"
 #alias ghostty="/Applications/Ghostty.app/Contents/MacOS/ghostty"
 
 #/Users/alex/go/bin/figurine -f "Doom.flf" magrathea
