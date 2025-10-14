@@ -8,14 +8,14 @@ in
 
 
     brave                                                  # Brave browser
-    github-desktop
+    # github-desktop  # Not available for aarch64-darwin (Apple Silicon)
     dbeaver-bin
     bitwarden-desktop
-    bitwarden-cli
+    # bitwarden-cli  # Marked as broken in current nixpkgs
     neovim
     zed-editor
     vscode
-    ghostty
+    # ghostty  # Not available for aarch64-darwin (Apple Silicon)
     redis
 
     # === MONITORING & SYSTEM TOOLS ===
