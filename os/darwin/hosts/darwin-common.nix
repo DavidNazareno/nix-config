@@ -114,7 +114,7 @@ in
       #"popclip"                  # Text selection actions
       #"shortcat"                 # Keyboard navigation
       #"clop"                     # Image optimization
-      
+
       # --- COMMUNICATION ---
       "wechat"                    # Chinese instant messaging
       "discord"                   # Gaming and community chat
@@ -127,7 +127,7 @@ in
       # --- DEVELOPMENT TOOLS ---
       # "visual-studio-code"        # Code editor
       # "zed-editor"                # Code editor
-      # "ghostty"                   # Terminal emulator
+      "ghostty"                   # Terminal emulator
       # "alacritty"                 # GPU-accelerated terminal
       "iterm2"                    # Terminal emulator
       "orbstack"                  # Docker and Linux containers
@@ -136,6 +136,7 @@ in
       #"marta"                    # File manager
       "medis"
       "dbngin"
+      "github"
       
       # --- AI & MACHINE LEARNING ---
       # "lm-studio"                 # Local language model studio
