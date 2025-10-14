@@ -83,7 +83,7 @@ in
       # "neovim"                    # Modern text editor
       # "ollama"                    # Local LLM runner
       #"tailscale"                # VPN mesh network
-      "borders"                  # Window borders for macOS
+      # "borders"                  # Window borders for macOS
     ];
     
     # === HOMEBREW TAPS ===
@@ -199,7 +199,7 @@ in
     masApps = {
       "Amphetamine" = 937984704;
       # "AutoMounter" = 1160435653;
-      "PoolsuiteFM" = 1514817810;
+      "Poolsuite FM" = 1514817810;
 
       # "Creator's Best Friend" = 1524172135;
       # "DaVinci Resolve" = 571213070;
@@ -321,8 +321,8 @@ in
         SortColumn = "CPUUsage";
         SortDirection = 0;
       };
-      "com.apple.Safari" = {
-        # Privacy: don’t send search queries to Apple
+       "com.apple.Safari" = {
+        # Privacy: don't send search queries to Apple
         UniversalSearchEnabled = false;
         SuppressSearchSuggestions = true;
       };
