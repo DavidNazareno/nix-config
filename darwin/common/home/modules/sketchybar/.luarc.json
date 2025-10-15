@@ -1,0 +1,11 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "icons",
+        "colors",
+        "bar",
+        "default",
+        "helpers"
+    ],
+    "runtime.version": "Lua 5.4"
+}
