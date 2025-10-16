@@ -49,8 +49,18 @@
  
 
   # Bat (mejor cat)
-  programs.bat.enable = true;
-  programs.bat.config.theme = "Nord";
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "Nord";
+    };
+    themes = {
+      # Agregar temas personalizados si es necesario
+    };
+    syntaxes = {
+      # Agregar sintaxis personalizadas si es necesario
+    };
+  };
 
   # Zoxide para navegación inteligente
   programs.zoxide.enable = true;

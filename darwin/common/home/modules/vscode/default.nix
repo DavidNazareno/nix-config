@@ -17,7 +17,7 @@ in
 {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.vscode;
 
     mutableExtensionsDir = false;
     profiles = {
@@ -35,7 +35,7 @@ in
             svelte.svelte-vscode
             christian-kohler.path-intellisense
             wix.vscode-import-cost
-            ms-python.pythond
+            ms-python.python
             rust-lang.rust-analyzer
             ziglang.vscode-zig
             vscodevim.vim

@@ -18,16 +18,7 @@
       default-root-container-layout = "tiles";
       default-root-container-orientation = "vertical";
 
-      # SimpleBar integration callbacks
-      exec-on-workspace-change = [
-        "/bin/zsh"
-        "-c"
-        "/usr/bin/osascript -e \"tell application id \\\"tracesOf.Uebersicht\\\" to refresh widget id \\\"simple-bar-index-jsx\\\"\""
-      ];
-
-      on-focus-changed = [
-        "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
-      ];
+     
 
       gaps = {
         outer = {
@@ -37,8 +28,8 @@
           right = 0;
         };
         inner = {
-          horizontal = 2;
-          vertical = 2;
+          horizontal = 0;
+          vertical = 0;
         };
       };
 
@@ -56,24 +47,6 @@
         {
           check-further-callbacks = false;
           "if" = {
-            app-id = "dev.kdrag0n.MacVirt";
-          };
-          run = [
-            "layout floating"
-          ];
-        }
-        {
-          check-further-callbacks = false;
-          "if" = {
-            app-id = "com.github.th-ch.youtube-music";
-          };
-          run = [
-            "layout floating"
-          ];
-        }
-        {
-          check-further-callbacks = false;
-          "if" = {
             app-id = "com.apple.Passwords";
           };
           run = [
@@ -83,7 +56,7 @@
         {
           check-further-callbacks = false;
           "if" = {
-            app-id = "com.utmapp.UTM";
+            app-id = "com.bitwarden.desktop";
           };
           run = [
             "layout floating"
@@ -92,7 +65,7 @@
         {
           check-further-callbacks = false;
           "if" = {
-            app-id = "org.qbittorrent.qBittorrent";
+            app-id = "com.orbstack.OrbStack";
           };
           run = [
             "layout floating"
@@ -101,7 +74,7 @@
         {
           check-further-callbacks = false;
           "if" = {
-            app-id = "com.vmware.fusion";
+            app-id = "com.bjango.istatmenus";
           };
           run = [
             "layout floating"
@@ -110,27 +83,74 @@
         {
           check-further-callbacks = false;
           "if" = {
-            app-id = "com.aone.keka";
+            app-id = "com.BetterDisplay.BetterDisplay";
           };
           run = [
             "layout floating"
           ];
         }
-        ####### Specific spaces for apps #######
         {
           check-further-callbacks = false;
           "if" = {
-            app-id = "app.zen-browser.zen";
+            app-id = "com.logitech.manager";
+          };
+          run = [
+            "layout floating"
+          ];
+        }
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "com.freemacsoft.AppCleaner";
+          };
+          run = [
+            "layout floating"
+          ];
+        }
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "com.PhilippeRemy.OmniDiskSweeper";
+          };
+          run = [
+            "layout floating"
+          ];
+        }
+
+        ####### Workspace 1: Navegadores #######
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "company.thebrowser.Browser";
+          };
+          run = [
+            "move-node-to-workspace 1"
+          ];
+        }
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "com.brave.Browser";
+          };
+          run = [
+            "move-node-to-workspace 1"
+          ];
+        }
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "com.alex313031.thorium";
           };
           run = [
             "move-node-to-workspace 1"
           ];
         }
 
+        ####### Workspace 2: Desarrollo #######
         {
           check-further-callbacks = false;
           "if" = {
-            app-id = "com.vscodium";
+            app-id = "com.microsoft.VSCode";
           };
           run = [
             "move-node-to-workspace 2"
@@ -148,15 +168,6 @@
         {
           check-further-callbacks = false;
           "if" = {
-            app-id = "net.kovidgoyal.kitty";
-          };
-          run = [
-            "move-node-to-workspace 2"
-          ];
-        }
-        {
-          check-further-callbacks = false;
-          "if" = {
             app-id = "com.mitchellh.ghostty";
           };
           run = [
@@ -166,7 +177,7 @@
         {
           check-further-callbacks = false;
           "if" = {
-            app-id = "md.obsidian";
+            app-id = "com.googlecode.iterm2";
           };
           run = [
             "move-node-to-workspace 2"
@@ -175,17 +186,27 @@
         {
           check-further-callbacks = false;
           "if" = {
-            app-id = "info.sioyek.sioyek";
+            app-id = "com.github.GitHubDesktop";
+          };
+          run = [
+            "move-node-to-workspace 2"
+          ];
+        }
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "org.dbeaver.dbeaver-ce";
           };
           run = [
             "move-node-to-workspace 2"
           ];
         }
 
+        ####### Workspace 3: Comunicación #######
         {
           check-further-callbacks = false;
           "if" = {
-            app-id = "us.zoom.xos";
+            app-id = "com.hnc.Discord";
           };
           run = [
             "move-node-to-workspace 3"
@@ -194,32 +215,61 @@
         {
           check-further-callbacks = false;
           "if" = {
-            app-id = "dev.vencord.vesktop";
+            app-id = "net.whatsapp.WhatsApp";
           };
           run = [
             "move-node-to-workspace 3"
+          ];
+        }
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "com.tencent.xinWeChat";
+          };
+          run = [
+            "move-node-to-workspace 3"
+          ];
+        }
+
+        ####### Workspace 4: Productividad #######
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "md.obsidian";
+          };
+          run = [
+            "move-node-to-workspace 4"
+          ];
+        }
+
+        ####### Workspace 5: Media #######
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "org.videolan.vlc";
+          };
+          run = [
+            "move-node-to-workspace 5"
+          ];
+        }
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "com.poolsuite.fm";
+          };
+          run = [
+            "move-node-to-workspace 5"
           ];
         }
       ];
 
       mode.main.binding = {
+        # Disable conflicting macOS shortcuts
         cmd-alt-h = [ ];
         cmd-h = [ ];
 
+        # Workspace navigation
         alt-tab = "workspace-back-and-forth";
-
-        alt-h = "focus left";
-        alt-j = "focus down";
-        alt-k = "focus up";
-        alt-l = "focus right";
-
-        alt-shift-h = "move left";
-        alt-shift-j = "move down";
-        alt-shift-k = "move up";
-        alt-shift-l = "move right";
-
-        ctrl-cmd-shift-0 = "balance-sizes";
-
         alt-1 = "workspace 1";
         alt-2 = "workspace 2";
         alt-3 = "workspace 3";
@@ -227,47 +277,112 @@
         alt-5 = "workspace 5";
         alt-6 = "workspace 6";
 
+        # Focus navigation (Vim-style)
+        alt-h = "focus left";
+        alt-j = "focus down";
+        alt-k = "focus up";
+        alt-l = "focus right";
+
+        # Move windows (Vim-style)
+        alt-shift-h = "move left";
+        alt-shift-j = "move down";
+        alt-shift-k = "move up";
+        alt-shift-l = "move right";
+
+        # Move windows to workspaces
         alt-shift-1 = [
-          "move-node-to-workspace 1"
+          "move-node-to-workspace 1" 
           "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
         ];
         alt-shift-2 = [
-          "move-node-to-workspace 2"
-          # "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          "move-node-to-workspace 2" 
+          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
         ];
         alt-shift-3 = [
-          "move-node-to-workspace 3"
-          # "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          "move-node-to-workspace 3" 
+          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
         ];
         alt-shift-4 = [
-          "move-node-to-workspace 4"
-          # "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          "move-node-to-workspace 4" 
+          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
         ];
         alt-shift-5 = [
-          "move-node-to-workspace 5"
-          # "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          "move-node-to-workspace 5" 
+          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
         ];
         alt-shift-6 = [
-          "move-node-to-workspace 6"
-          # "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          "move-node-to-workspace 6" 
+          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
         ];
 
-        alt-shift-space = "layout floating tiling";
+        # Window resizing (more intuitive)
+        alt-ctrl-h = "resize width -50";     # Hacer ventana más estrecha
+        alt-ctrl-l = "resize width +50";     # Hacer ventana más ancha
+        alt-ctrl-j = "resize height +50";    # Hacer ventana más alta
+        alt-ctrl-k = "resize height -50";    # Hacer ventana más baja
+        
+        # Smart resize (mantener el original también)
         alt-shift-minus = "resize smart -50";
         alt-shift-equal = "resize smart +50";
 
+        # Balance all windows
+        ctrl-cmd-shift-0 = "balance-sizes";
+
+        # Layout controls
+        alt-shift-space = "layout floating tiling";  # Toggle floating/tiling
+        alt-slash = "layout horizontal vertical";     # Toggle orientation
+        
+        # Join windows
         alt-leftSquareBracket = "join-with left";
         alt-rightSquareBracket = "join-with right";
 
-        alt-slash = "layout horizontal vertical";
-
-        # ctrl-cmd-shift-r = "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --reload && aerospace reload-config";
-
+        # Quick app launchers
         alt-t = "exec-and-forget open -a Ghostty.app";
-        alt-e = ''exec-and-forget open -a "Twilight.app"'';
         alt-c = "exec-and-forget open -a Zed.app";
-        alt-d = "exec-and-forget open -a Obsidian.app";
+        alt-b = "exec-and-forget open -a Arc.app";
+        alt-f = "exec-and-forget open -a Finder.app";
+
+        # Mode switching for advanced operations
+        alt-r = "mode resize";
       };
+
+      # Resize mode for fine-grained window control
+      mode.resize.binding = {
+        # Resize with arrow keys or vim keys
+        h = "resize width -50";
+        j = "resize height +50";
+        k = "resize height -50";
+        l = "resize width +50";
+        
+        left = "resize width -50";
+        down = "resize height +50";
+        up = "resize height -50";
+        right = "resize width +50";
+        
+        # Fine adjustments
+        shift-h = "resize width -10";
+        shift-j = "resize height +10";
+        shift-k = "resize height -10";
+        shift-l = "resize width +10";
+        
+        # Balance and reset
+        b = "balance-sizes";
+        r = "flatten-workspace-tree";
+        
+        # Exit resize mode
+        esc = "mode main";
+      };
+
+      exec-on-workspace-change = [
+        "/bin/zsh"
+        "-c"
+        "${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_changed FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+      ];
+
+      on-focus-changed = [
+        "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+        "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger front_app_switched"
+      ];
     };
   };
 }

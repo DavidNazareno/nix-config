@@ -5,7 +5,6 @@ let
   inherit (inputs) nixpkgs nixpkgs-unstable;
 in
 {
-  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
 
     # === NAVEGADORES Y APLICACIONES ===
@@ -38,7 +37,7 @@ in
     just                                                    # Command runner (make alternative)
     # terraform                                               # Infrastructure as code tool
     uv                                                      # Fast Python package installer
-    
+    typescript 
     # === CONTAINER & CLOUD TOOLS ===
     nixpkgs-unstable.legacyPackages.${pkgs.system}.talosctl # Talos Linux management CLI
     # skopeo                                                  # Container image manipulation tool
@@ -69,10 +68,16 @@ in
     tree                                                   # Directory tree viewer
     unzip                                                  # Archive extraction utility
     watch                                                  # Execute programs periodically
+    lua54Packages.lua
+
     
     # === PROPRIETARY SOFTWARE (requires allowUnfree) ===
     vscode-extensions.ms-vscode-remote.remote-ssh          # VS Code remote SSH extension
     
+
+    nerd-fonts.caskaydia-cove
+
+
     # === COMMENTED OUT / OPTIONAL ===
     # ansible                                              # IT automation platform
     # hugo                                                 # Static site generator

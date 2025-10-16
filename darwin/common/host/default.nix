@@ -44,6 +44,12 @@ in
     pkgs.lima
     pkgs.nix
 
+    ## GUI packages
+    sbarlua  # Usando el paquete de nixpkgs en lugar del flake
+    sketchybar
+    sketchybar-app-font
+    zsh-autopair
+   
     ## custom packages
     customPackages.sshpilot
   ];
@@ -72,7 +78,10 @@ in
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    promptInit = builtins.readFile ../data/mac-dot-zshrc;
   };
 
+ services.sketchybar = {
+    enable = true;
+    package = pkgs.sketchybar;
+  };
 }

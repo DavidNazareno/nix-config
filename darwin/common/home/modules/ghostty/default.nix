@@ -5,14 +5,18 @@
 {
   programs.ghostty = {
     enable = true;
-    package = pkgs.emptyDirectory;
+    package = null;
     enableZshIntegration = true;
+    enableBashIntegration = false;
+    enableFishIntegration = false;
+    installBatSyntax = false;
 
     settings = {
       shell-integration = "zsh";
       shell-integration-features = "no-cursor";
       background-blur = 255;
-      theme = "tokyonight_moon";
+      font-family = "FiraCode Nerd Font Mono";
+      theme = "nord";
       font-thicken = true;
       cursor-style = "block";
       mouse-hide-while-typing = true;
@@ -23,8 +27,10 @@
       macos-option-as-alt = "left";
       window-inherit-working-directory = false;
       window-padding-balance = true;
-      window-padding-x = 15;
-      window-padding-y = 15;
+      window-width = 122;
+      window-height = 30;
+      window-padding-x = 6;
+      window-padding-y = 6;
       # Quick Terminal
       keybind = "global:cmd+grave_accent=toggle_quick_terminal";
       quick-terminal-position = "right";

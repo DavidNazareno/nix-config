@@ -50,6 +50,36 @@
       # Configuración de autosuggestions
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666666"
       ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+      
+      # Configuraciones adicionales del sistema
+      export CLICOLOR=1
+      export LSCOLORS=gxfxcxdxbxgggdabagacad
+      export SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt
+      
+      # path fix for homebrew
+      export PATH=$PATH:/opt/homebrew/bin/
+      export PATH=$PATH:/Users/davidnazareno/go/bin
+      export PATH=$HOME/.npm-global/bin:$PATH
+      export VISUAL=nvim
+      export EDITOR=nvim
+      export TERM=xterm
+      
+      # Nix
+      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      fi
+      
+      # Kubectl completion
+      source <(kubectl completion zsh)
+      export KUBE_EDITOR="nvim"
+      
+      # Comma function for nix run
+      , () {
+        nix run nixpkgs#comma -- "$@"
+      }
+      
+      # Starship prompt (debe ir al final)
+      eval "$(starship init zsh)"
     '';
     
     # Variables de entorno

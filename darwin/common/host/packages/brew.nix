@@ -17,6 +17,7 @@
       "nowplaying-cli"
       "fonttools"
       "fzf"
+      "nvm"  # Node Version Manager
     ];
     
     # === HOMEBREW TAPS ===
@@ -31,7 +32,9 @@
       "omnidisksweeper"           # Disk space analyzer
       "applite"                   # Application launcher
       "appcleaner"
-      "bitwarden"                # Application uninstaller
+      "bitwarden"                # Password manager
+      # "anydesk"                 # Temporalmente deshabilitado - error de instalación
+      # "keka"                    # Temporalmente deshabilitado - error de instalación
 
       # --- COMMUNICATION ---
       "wechat"                    # Chinese instant messaging
@@ -47,7 +50,7 @@
       "github"
       "visual-studio-code"
       "zed"
-      "dbeaver-community"
+      "dbeaver-community" 
 
       
       # --- BROWSERS ---

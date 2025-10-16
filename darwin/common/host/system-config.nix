@@ -36,9 +36,12 @@
       # Dark mode
       AppleInterfaceStyle = "Dark";
       # Auto-hide menu bar
-       _HIHideMenuBar = false;
+       _HIHideMenuBar = true;
       # Disable window animations
       NSAutomaticWindowAnimationsEnabled = false;
+      # Set system font (requires logout/restart to take effect)
+      # Options: "Helvetica Neue", "SF Pro Display", "FiraCode Nerd Font", etc.
+    
     };
     LaunchServices.LSQuarantine = false; # disables "Are you sure?" for new apps
     loginwindow.GuestEnabled = false;

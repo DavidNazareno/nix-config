@@ -29,8 +29,8 @@ in
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
-            home-manager.extraSpecialArgs = { inherit inputs constants; };
-            home-manager.users.${username} = { imports = [ ./../../common/home/users/${username}.nix ]; };
+            home-manager.extraSpecialArgs = { inherit inputs constants system unstablePkgs; };
+            home-manager.users.${username} = { imports = [ ./../common/home/${username}.nix inputs.stylix.homeModules.stylix ]; };
         }
         inputs.nix-homebrew.darwinModules.nix-homebrew {
           nix-homebrew = {

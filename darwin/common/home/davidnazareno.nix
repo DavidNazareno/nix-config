@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, lib, unstablePkgs, constants, ... }:
+{ config, inputs, pkgs, lib, unstablePkgs, constants, system, ... }:
 {
   # Import common configuration
   imports = [
@@ -6,20 +6,14 @@
     ./modules/ghostty/default.nix
     ./modules/vscode/default.nix
     ./modules/zed/default.nix
+    ./modules/sketchybar/default.nix
 
   ];
 
   # Darwin-specific configurations
   
   # Darwin-specific file configurations
-  home.file = lib.mkMerge [
-    # Aerospace configuration (macOS tiling window manager)
-    (lib.mkIf pkgs.stdenv.isDarwin {
-      ".config/aerospace/aerospace.toml".text = builtins.readFile ../host/modules/aerospace/aerospace.toml;
-      # Ghostty configuration (terminal emulator)
-      ".config/ghostty/config".text = builtins.readFile ../host/modules/ghostty/config;
-    })
-  ];
+  # Note: Aerospace configuration is handled by services.aerospace in host configuration
 
   # macOS-specific zsh plugins and configurations
   programs.zsh = {
