@@ -18,27 +18,27 @@
       default-root-container-layout = "tiles";
       default-root-container-orientation = "vertical";
 
-      # exec-on-workspace-change = [
-      #   "/bin/zsh"
-      #   "-c"
-      #   "${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_changed FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
-      # ];
+      # SimpleBar integration callbacks
+      exec-on-workspace-change = [
+        "/bin/zsh"
+        "-c"
+        "/usr/bin/osascript -e \"tell application id \\\"tracesOf.Uebersicht\\\" to refresh widget id \\\"simple-bar-index-jsx\\\"\""
+      ];
 
-      # on-focus-changed = [
-      #   "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
-      #   "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger front_app_switched"
-      # ];
+      on-focus-changed = [
+        "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
+      ];
 
       gaps = {
         outer = {
-          top = 20;
+          top = 26;
           bottom = 0;
           left = 0;
           right = 0;
         };
         inner = {
-          horizontal = 16;
-          vertical = 16;
+          horizontal = 2;
+          vertical = 2;
         };
       };
 
