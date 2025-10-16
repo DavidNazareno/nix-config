@@ -4,7 +4,6 @@
   imports = [
     ../../../common/home/default.nix
     ./modules/ghostty/default.nix
-    ./modules/sketchybar/default.nix
     ./modules/vscode/default.nix
     ./modules/zed/default.nix
 

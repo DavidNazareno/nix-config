@@ -9,13 +9,7 @@ in
   environment.systemPackages = with pkgs; [
 
     # === NAVEGADORES Y APLICACIONES ===
-    brave                                                  # Brave browser
-    # github-desktop  # Not available for aarch64-darwin (Apple Silicon)
-    dbeaver-bin                                           # Database management tool
-    bitwarden-desktop                                     # Password manager
     neovim                                                # Modern Vim-based editor
-    zed-editor                                            # High-performance code editor
-    vscode                                                # Visual Studio Code
     redis                                                 # In-memory data structure store
 
     # === MONITORING & SYSTEM TOOLS ===

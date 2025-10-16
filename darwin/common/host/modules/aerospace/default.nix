@@ -18,16 +18,16 @@
       default-root-container-layout = "tiles";
       default-root-container-orientation = "vertical";
 
-      exec-on-workspace-change = [
-        "/bin/zsh"
-        "-c"
-        "${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_changed FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
-      ];
+      # exec-on-workspace-change = [
+      #   "/bin/zsh"
+      #   "-c"
+      #   "${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_changed FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+      # ];
 
-      on-focus-changed = [
-        "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
-        "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger front_app_switched"
-      ];
+      # on-focus-changed = [
+      #   "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+      #   "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger front_app_switched"
+      # ];
 
       gaps = {
         outer = {
@@ -233,23 +233,23 @@
         ];
         alt-shift-2 = [
           "move-node-to-workspace 2"
-          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          # "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
         ];
         alt-shift-3 = [
           "move-node-to-workspace 3"
-          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          # "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
         ];
         alt-shift-4 = [
           "move-node-to-workspace 4"
-          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          # "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
         ];
         alt-shift-5 = [
           "move-node-to-workspace 5"
-          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          # "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
         ];
         alt-shift-6 = [
           "move-node-to-workspace 6"
-          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          # "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
         ];
 
         alt-shift-space = "layout floating tiling";
@@ -261,7 +261,7 @@
 
         alt-slash = "layout horizontal vertical";
 
-        ctrl-cmd-shift-r = "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --reload && aerospace reload-config";
+        # ctrl-cmd-shift-r = "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --reload && aerospace reload-config";
 
         alt-t = "exec-and-forget open -a Ghostty.app";
         alt-e = ''exec-and-forget open -a "Twilight.app"'';

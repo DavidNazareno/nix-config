@@ -75,8 +75,4 @@ in
     promptInit = builtins.readFile ../data/mac-dot-zshrc;
   };
 
-  services.sketchybar = {
-    enable = true;
-    package = pkgs.sketchybar;
-  };
 }

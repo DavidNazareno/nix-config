@@ -36,7 +36,7 @@
       # Dark mode
       AppleInterfaceStyle = "Dark";
       # Auto-hide menu bar
-      _HIHideMenuBar = true;
+      # _HIHideMenuBar = true;
       # Disable window animations
       NSAutomaticWindowAnimationsEnabled = false;
     };
@@ -107,11 +107,11 @@
         SortColumn = "CPUUsage";
         SortDirection = 0;
       };
-       "com.apple.Safari" = {
+    /*    "com.apple.Safari" = {
         # Privacy: don't send search queries to Apple
         UniversalSearchEnabled = false;
         SuppressSearchSuggestions = true;
-      };
+      }; */
       "com.apple.AdLib" = {
         allowApplePersonalizedAdvertising = false;
       };

@@ -21,8 +21,8 @@
     
     # === HOMEBREW TAPS ===
     taps = [
-      "homebrew/services"
-      "FelixKratz/formulae"      # SketchyBar and other tools
+      # "homebrew/services"
+      # "FelixKratz/formulae"      # SketchyBar and other tools
     ];
     
     # === GUI APPLICATIONS ===
@@ -30,7 +30,8 @@
       # --- PRODUCTIVITY & OFFICE ---
       "omnidisksweeper"           # Disk space analyzer
       "applite"                   # Application launcher
-      "appcleaner"                # Application uninstaller
+      "appcleaner"
+      "bitwarden"                # Application uninstaller
 
       # --- COMMUNICATION ---
       "wechat"                    # Chinese instant messaging
@@ -38,16 +39,21 @@
       "whatsapp"                  # Instant messaging
 
       # --- DEVELOPMENT TOOLS ---
-      "ghostty@tip"                   # Terminal emulator
+      "ghostty"                   # Terminal emulator
       "iterm2"                    # Terminal emulator
       "orbstack"                  # Docker and Linux containers
       "medis"
       "dbngin"
       "github"
+      "visual-studio-code"
+      "zed"
+      "dbeaver-community"
+
       
       # --- BROWSERS ---
       "thorium"           # Chromium-based browser
-      "arc"               # Arc browser
+      "arc"
+      "brave-browser"               # Arc browser
       
       # --- MEDIA & ENTERTAINMENT ---
       "vlc"                       # Media player
