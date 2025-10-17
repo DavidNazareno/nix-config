@@ -49,6 +49,7 @@ in
     sketchybar
     sketchybar-app-font
     zsh-autopair
+    jankyborders
    
     ## custom packages
     customPackages.sshpilot

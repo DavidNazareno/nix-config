@@ -22,14 +22,14 @@
 
       gaps = {
         outer = {
-          top = 26;
-          bottom = 0;
-          left = 0;
-          right = 0;
+          top = 0;
+          bottom = 30;
+          left = 10;
+          right = 10;
         };
         inner = {
-          horizontal = 0;
-          vertical = 0;
+          horizontal = 10;
+          vertical = 10;
         };
       };
 

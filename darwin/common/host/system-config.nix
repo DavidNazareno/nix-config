@@ -36,7 +36,7 @@
       # Dark mode
       AppleInterfaceStyle = "Dark";
       # Auto-hide menu bar
-       _HIHideMenuBar = true;
+       _HIHideMenuBar = false;
       # Disable window animations
       NSAutomaticWindowAnimationsEnabled = false;
       # Set system font (requires logout/restart to take effect)

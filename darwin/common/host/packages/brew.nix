@@ -32,9 +32,9 @@
       "omnidisksweeper"           # Disk space analyzer
       "applite"                   # Application launcher
       "appcleaner"
-      "bitwarden"                # Password manager
-      # "anydesk"                 # Temporalmente deshabilitado - error de instalación
-      # "keka"                    # Temporalmente deshabilitado - error de instalación
+      "bitwarden"                # Application uninstaller
+      "anydesk"
+      "keka"
 
       # --- COMMUNICATION ---
       "wechat"                    # Chinese instant messaging
@@ -62,7 +62,6 @@
       "vlc"                       # Media player
       
       # --- SYSTEM UTILITIES ---
-      "istat-menus"               # System monitoring
       "music-decoy"               # Prevent accidental music playback
       "balenaetcher"             # USB/SD card imaging
 
@@ -77,6 +76,9 @@
       "font-hack-nerd-font"       # Hack font with icons
       "font-jetbrains-mono-nerd-font" # JetBrains Mono with icons
       "font-meslo-lg-nerd-font"   # Meslo LG with icons
+      "sf-symbols"                # System symbols font
+      "font-sf-mono"              # System San Francisco Mono font
+      "font-sf-pro"               # System San Francisco Pro font
     ];
   };
 }
