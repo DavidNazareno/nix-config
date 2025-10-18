@@ -39,6 +39,7 @@
        _HIHideMenuBar = false;
       # Disable window animations
       NSAutomaticWindowAnimationsEnabled = false;
+
       # Set system font (requires logout/restart to take effect)
       # Options: "Helvetica Neue", "SF Pro Display", "FiraCode Nerd Font", etc.
     

@@ -16,7 +16,7 @@
       shell-integration-features = "no-cursor";
       background-blur = 255;
       font-family = "FiraCode Nerd Font Mono";
-      theme = "nord";
+      theme = "Gitlab Dark Grey";
       font-thicken = true;
       cursor-style = "block";
       mouse-hide-while-typing = true;

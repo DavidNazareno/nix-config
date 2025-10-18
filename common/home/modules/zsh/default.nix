@@ -9,6 +9,7 @@
     # Oh My Zsh configuration
     oh-my-zsh = {
       enable = true;
+      theme = "agnoster";
       plugins = [
         # Desarrollo y Git
         "git"

@@ -22,8 +22,8 @@
 
       gaps = {
         outer = {
-          top = 0;
-          bottom = 30;
+          top = 10;
+          bottom = 40;
           left = 10;
           right = 10;
         };
@@ -292,27 +292,27 @@
         # Move windows to workspaces
         alt-shift-1 = [
           "move-node-to-workspace 1" 
-          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          
         ];
         alt-shift-2 = [
           "move-node-to-workspace 2" 
-          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          
         ];
         alt-shift-3 = [
           "move-node-to-workspace 3" 
-          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          
         ];
         alt-shift-4 = [
           "move-node-to-workspace 4" 
-          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          
         ];
         alt-shift-5 = [
           "move-node-to-workspace 5" 
-          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          
         ];
         alt-shift-6 = [
           "move-node-to-workspace 6" 
-          "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
+          
         ];
 
         # Window resizing (more intuitive)
@@ -373,16 +373,16 @@
         esc = "mode main";
       };
 
-      exec-on-workspace-change = [
-        "/bin/zsh"
-        "-c"
-        "${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_changed FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
-      ];
+    on-focus-changed = [
+      "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
+    ];
 
-      on-focus-changed = [
-        "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger space_windows_change"
-        "exec-and-forget ${pkgs.sketchybar}/bin/sketchybar --trigger front_app_switched"
-      ];
+    exec-on-workspace-change = [
+      "/bin/zsh"
+      "-c"
+      "/usr/bin/osascript -e \"tell application id \\\"tracesOf.Uebersicht\\\" to refresh widget id \\\"simple-bar-index-jsx\\\"\""
+    ];
+    
     };
   };
 }

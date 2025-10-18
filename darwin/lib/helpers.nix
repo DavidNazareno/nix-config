@@ -15,22 +15,22 @@ in
       modules = [
         ./../common/host/default.nix
         customConf
-        # Add nodejs overlay to fix build issues (https://github.com/NixOS/nixpkgs/issues/402079)
-        {
-          nixpkgs.overlays = [
-            (final: prev: {
-              nodejs = prev.nodejs_22;
-              nodejs-slim = prev.nodejs-slim_22;
-            })
-          ];
-        }
         inputs.home-manager.darwinModules.home-manager {
             networking.hostName = hostname;
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = { inherit inputs constants system unstablePkgs; };
-            home-manager.users.${username} = { imports = [ ./../common/home/${username}.nix inputs.stylix.homeModules.stylix ]; };
+            home-manager.users.${username} = { 
+              imports = [ ./../common/home/${username}.nix inputs.stylix.homeModules.stylix ]; 
+              # Configurar nixpkgs dentro de home-manager para evitar conflictos
+              nixpkgs.overlays = [
+                (final: prev: {
+                  nodejs = prev.nodejs_22;
+                  nodejs-slim = prev.nodejs-slim_22;
+                })
+              ];
+            };
         }
         inputs.nix-homebrew.darwinModules.nix-homebrew {
           nix-homebrew = {

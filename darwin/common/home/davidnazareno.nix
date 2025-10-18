@@ -6,7 +6,7 @@
     ./modules/ghostty/default.nix
     ./modules/vscode/default.nix
     ./modules/zed/default.nix
-    ./modules/sketchybar/default.nix
+    ./modules/simplebar/default.nix
 
   ];
 

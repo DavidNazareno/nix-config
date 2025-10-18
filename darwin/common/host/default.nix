@@ -45,9 +45,7 @@ in
     pkgs.nix
 
     ## GUI packages
-    sbarlua  # Usando el paquete de nixpkgs en lugar del flake
-    sketchybar
-    sketchybar-app-font
+   
     zsh-autopair
     jankyborders
    
@@ -79,10 +77,5 @@ in
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-  };
-
- services.sketchybar = {
-    enable = true;
-    package = pkgs.sketchybar;
   };
 }
