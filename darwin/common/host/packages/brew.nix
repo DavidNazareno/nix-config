@@ -12,20 +12,20 @@
 
     # === COMMAND LINE TOOLS ===
     brews = [
-      "libiconv" 
+      "libiconv"
       "switchaudio-osx"
       "nowplaying-cli"
       "fonttools"
       "fzf"
       "nvm"  # Node Version Manager
     ];
-    
+
     # === HOMEBREW TAPS ===
     taps = [
       # "homebrew/services"
       # "FelixKratz/formulae"      # SketchyBar and other tools
     ];
-    
+
     # === GUI APPLICATIONS ===
     casks = [
       # --- PRODUCTIVITY & OFFICE ---
@@ -35,7 +35,7 @@
       "bitwarden"                # Application uninstaller
       "anydesk"
       "keka"
-
+      "command-x"
       # --- COMMUNICATION ---
       "wechat"                    # Chinese instant messaging
       "discord"                   # Gaming and community chat
@@ -50,17 +50,17 @@
       "github"
       "visual-studio-code"
       "zed"
-      "dbeaver-community" 
+      "dbeaver-community"
 
-      
+
       # --- BROWSERS ---
       "thorium"           # Chromium-based browser
       "arc"
       "brave-browser"               # Arc browser
-      
+
       # --- MEDIA & ENTERTAINMENT ---
       "vlc"                       # Media player
-      
+
       # --- SYSTEM UTILITIES ---
       "music-decoy"               # Prevent accidental music playback
       "balenaetcher"             # USB/SD card imaging
@@ -69,7 +69,7 @@
       # --- HARDWARE & PERIPHERALS ---
       "logitech-options"          # Logitech device software
       "betterdisplay"
-      
+
       # --- FONTS ---
       "font-fira-code"            # Fira Code font
       "font-fira-code-nerd-font"  # Fira Code with icons
