@@ -11,7 +11,6 @@
       "java"
       "dockerfile"
       "sql"
-      "ruby"
       "latex"
       "xml"
       "make"
@@ -27,9 +26,23 @@
       "env"
       "deno"
       "git-firefly"
+      "mcp-server-context7"
+      "react-typescript-snippets"
+      "min-theme"
     ];
     userSettings = {
-      base_keymap = "Atom";
+      ui_font_family = "SF Pro Display";
+      buffer_font_family = "Fira Code";
+      telemetry = {
+        diagnostics = false;
+        metrics = false;
+      };
+      base_keymap = "VSCode";
+      theme= {
+        mode = "system";
+        light = "One Light";
+        dark = "Min Dark (Blurred)";
+      };
       vertical_scroll_margin = 5;
       vim_mode = true;
       relative_line_numbers = true;
@@ -71,16 +84,7 @@
         };
       };
       show_edit_predictions = true;
-      features.edit_predicition_provider = "supermaven";
-      assistant = {
-        version = "2";
-        default_model = {
-          provider = "lmstudio";
-          model = "deepseek-coder-v2-lite-instruct-mlx";
-        };
-      };
       formatter = "language_server";
-      formate_on_save = "on";
       git = {
         inline_blame = {
           enabled = true;

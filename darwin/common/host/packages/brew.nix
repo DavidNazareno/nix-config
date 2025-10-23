@@ -51,10 +51,10 @@
       "visual-studio-code"
       "zed"
       "dbeaver-community"
-
+      "cloudflare-warp"
 
       # --- BROWSERS ---
-      "thorium"           # Chromium-based browser
+      "chromium"
       "arc"
       "brave-browser"               # Arc browser
 

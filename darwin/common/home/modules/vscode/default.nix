@@ -26,11 +26,16 @@ in
         extensions =
           with pkgs.vscode-extensions;
           [
+            christian-kohler.npm-intellisense
+            yoavbls.pretty-ts-errors
+            usernamehw.errorlens
+            eamodio.gitlens
+            mhutchie.git-graph
+            dbaeumer.vscode-eslint
             jnoortheen.nix-ide
             esbenp.prettier-vscode
             aaron-bond.better-comments
             mvllow.rose-pine
-            prisma.prisma
             sumneko.lua
             svelte.svelte-vscode
             christian-kohler.path-intellisense
@@ -43,16 +48,18 @@ in
             formulahendry.auto-rename-tag
             jock.svg
             visualstudioexptteam.vscodeintellicode
+            biomejs.biome
+            unifiedjs.vscode-mdx
           ]
           ++ vscode-marketplace;
         # ++ open-vsx;
         userSettings = {
           # appearance
-          editor.fontFamily = config.stylix.fonts.monospace.name;
+          editor.fontFamily = "Fira Code";
           editor.fontLigatures = true;
-          editor.lineHeight = 34;
-          workbench.colorTheme = "Stylix";
-          workbench.iconTheme = "symbols"; # miguelsolorio.symbols
+          editor.lineHeight = 2;
+          workbench.colorTheme = "GitHub Dark Default";
+          workbench.iconTheme = "charmed-icons"; # miguelsolorio.symbols
           editor.minimap.enabled = false;
           workbench.tips.enabled = false;
           breadcrumbs.enabled = true;
