@@ -4,14 +4,13 @@
   imports = [
     ../../../common/home/default.nix
     ./modules/ghostty/default.nix
-    ./modules/vscode/default.nix
     ./modules/zed/default.nix
     ./modules/simplebar/default.nix
 
   ];
 
   # Darwin-specific configurations
-  
+
   # Darwin-specific file configurations
   # Note: Aerospace configuration is handled by services.aerospace in host configuration
 

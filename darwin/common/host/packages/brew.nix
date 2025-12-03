@@ -48,7 +48,7 @@
       "medis"
       "dbngin"
       "github"
-      "visual-studio-code"
+      #"visual-studio-code"
       "zed"
       "dbeaver-community"
       "cloudflare-warp"
@@ -57,7 +57,7 @@
       "chromium"
       "arc"
       "brave-browser"               # Arc browser
-
+      "helium-browser"
       # --- MEDIA & ENTERTAINMENT ---
       "vlc"                       # Media player
 
