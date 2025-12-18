@@ -64,7 +64,7 @@
       # --- SYSTEM UTILITIES ---
       "music-decoy"               # Prevent accidental music playback
       "balenaetcher"             # USB/SD card imaging
-      "ubersicht"                 # Desktop widget platform (required for Simple Bar)
+      #"ubersicht"                 # Desktop widget platform (required for Simple Bar)
 
       # --- HARDWARE & PERIPHERALS ---
       "logitech-options"          # Logitech device software

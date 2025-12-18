@@ -3,9 +3,8 @@
   # Import common configuration
   imports = [
     ../../../common/home/default.nix
-    ./modules/ghostty/default.nix
-    ./modules/zed/default.nix
-    ./modules/simplebar/default.nix
+    ./modules/ghostty.nix
+    #./modules/simplebar/default.nix
 
   ];
 
@@ -13,17 +12,7 @@
 
   # Darwin-specific file configurations
   # Note: Aerospace configuration is handled by services.aerospace in host configuration
-
-  # macOS-specific zsh plugins and configurations
-  programs.zsh = {
-    oh-my-zsh = {
-      # Solo agregar plugins específicos de macOS a los ya definidos en common
-      plugins = [
-        "macos"
-        "brew"
-      ];
-    };
-  };
+  # Note: Zsh configuration (including macOS-specific plugins) is handled in common/home/modules/zsh.nix
 
   # Configuraciones específicas del usuario para Darwin
   programs.git = {

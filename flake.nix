@@ -26,7 +26,15 @@
     inherit (self) outputs;
     constants = import ./common/host/constants.nix;
     stateVersion = constants.versions.stateVersion;
-    darwinLib = import ./darwin/lib/helpers.nix { inherit inputs outputs stateVersion; };
+    
+    # Módulos comunes que se aplican a TODAS las plataformas (Darwin, Linux, etc.)
+    commonModules = [
+      ./common/host/default.nix
+    ];
+    
+    darwinLib = import ./darwin/lib/helpers.nix { 
+      inherit inputs outputs stateVersion commonModules; 
+    };
   in {
     # macOS configuration with nix-darwin
     darwinConfigurations = {

@@ -18,14 +18,14 @@
       default-root-container-layout = "tiles";
       default-root-container-orientation = "vertical";
 
-     
+
 
       gaps = {
         outer = {
-          top = 10;
-          bottom = 40;
-          left = 10;
-          right = 10;
+          top = 0;
+          bottom = 0;
+          left = 0;
+          right = 0;
         };
         inner = {
           horizontal = 10;
@@ -291,28 +291,28 @@
 
         # Move windows to workspaces
         alt-shift-1 = [
-          "move-node-to-workspace 1" 
-          
+          "move-node-to-workspace 1"
+
         ];
         alt-shift-2 = [
-          "move-node-to-workspace 2" 
-          
+          "move-node-to-workspace 2"
+
         ];
         alt-shift-3 = [
-          "move-node-to-workspace 3" 
-          
+          "move-node-to-workspace 3"
+
         ];
         alt-shift-4 = [
-          "move-node-to-workspace 4" 
-          
+          "move-node-to-workspace 4"
+
         ];
         alt-shift-5 = [
-          "move-node-to-workspace 5" 
-          
+          "move-node-to-workspace 5"
+
         ];
         alt-shift-6 = [
-          "move-node-to-workspace 6" 
-          
+          "move-node-to-workspace 6"
+
         ];
 
         # Window resizing (more intuitive)
@@ -320,7 +320,7 @@
         alt-ctrl-l = "resize width +50";     # Hacer ventana más ancha
         alt-ctrl-j = "resize height +50";    # Hacer ventana más alta
         alt-ctrl-k = "resize height -50";    # Hacer ventana más baja
-        
+
         # Smart resize (mantener el original también)
         alt-shift-minus = "resize smart -50";
         alt-shift-equal = "resize smart +50";
@@ -331,7 +331,7 @@
         # Layout controls
         alt-shift-space = "layout floating tiling";  # Toggle floating/tiling
         alt-slash = "layout horizontal vertical";     # Toggle orientation
-        
+
         # Join windows
         alt-leftSquareBracket = "join-with left";
         alt-rightSquareBracket = "join-with right";
@@ -353,22 +353,22 @@
         j = "resize height +50";
         k = "resize height -50";
         l = "resize width +50";
-        
+
         left = "resize width -50";
         down = "resize height +50";
         up = "resize height -50";
         right = "resize width +50";
-        
+
         # Fine adjustments
         shift-h = "resize width -10";
         shift-j = "resize height +10";
         shift-k = "resize height -10";
         shift-l = "resize width +10";
-        
+
         # Balance and reset
         b = "balance-sizes";
         r = "flatten-workspace-tree";
-        
+
         # Exit resize mode
         esc = "mode main";
       };
@@ -382,7 +382,7 @@
       "-c"
       "/usr/bin/osascript -e \"tell application id \\\"tracesOf.Uebersicht\\\" to refresh widget id \\\"simple-bar-index-jsx\\\"\""
     ];
-    
+
     };
   };
 }

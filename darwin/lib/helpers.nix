@@ -1,4 +1,4 @@
-{ inputs, outputs, stateVersion, ... }:
+{ inputs, outputs, stateVersion, commonModules, ... }:
 let
   constants = import ../../common/host/constants.nix;
 in
@@ -12,8 +12,12 @@ in
   in
     inputs.nix-darwin.lib.darwinSystem {
       specialArgs = { inherit system inputs username unstablePkgs constants; };
-      modules = [
+      modules = commonModules ++ [
+        # commonModules viene del flake.nix y contiene la configuración común de TODAS las plataformas
+        
+        # Importar configuración específica de Darwin
         ./../common/host/default.nix
+        # Importar configuración específica del host (dnz-mac-mini, etc.)
         customConf
         inputs.home-manager.darwinModules.home-manager {
             networking.hostName = hostname;

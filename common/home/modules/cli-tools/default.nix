@@ -64,4 +64,32 @@
 
   # Zoxide para navegación inteligente
   programs.zoxide.enable = true;
+
+  # Carapace - multi-shell completion
+  programs.carapace = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+  };
+
+  # Atuin - shell history in SQLite
+  programs.atuin = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+  };
+
+  # Yazi - terminal file manager
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  # Starship is configured in starship.nix module
+
+  # Fish shell
+  programs.fish.enable = true;
+
+  # Nushell
+  programs.nushell.enable = true;
 }

@@ -5,11 +5,15 @@ let
 in
 {
   imports = [
+    # Módulos específicos de Darwin
+    # NO importamos common/host/ aquí - eso lo hace el helper/flake
     ./modules/aerospace/default.nix
     ./modules/borders/default.nix
+    ./system-config.nix
+    
+    # Paquetes específicos de Darwin
     ./packages/appstore.nix
     ./packages/brew.nix
-    ./system-config.nix
   ];
 
   users.users.${constants.user.username}.home = "/Users/${constants.user.username}";
@@ -32,24 +36,14 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    ## unstable
-    unstablePkgs.yt-dlp
-    unstablePkgs.get_iplayer
-    unstablePkgs.colmena
-
-    ## stable CLI
-    pkgs.comma
-    pkgs.hcloud
-    pkgs.just
-    pkgs.lima
-    pkgs.nix
-
-    ## GUI packages
-   
+    ## Darwin-specific packages only
+    # Los paquetes crossplatform ahora están en common/host/packages.nix
+    
+    ## GUI packages (Darwin-specific)
     zsh-autopair
     jankyborders
    
-    ## custom packages
+    ## Custom packages (Darwin-specific)
     customPackages.sshpilot
   ];
 
