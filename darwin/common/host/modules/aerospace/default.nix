@@ -6,7 +6,9 @@
 
     settings = {
       after-login-command = [ ];
-      after-startup-command = [ ];
+      after-startup-command = [
+        "workspace 1"  # Siempre empezar en workspace 1
+      ];
 
       key-mapping.preset = "qwerty";
 
@@ -16,16 +18,16 @@
       accordion-padding = 14;
 
       default-root-container-layout = "tiles";
-      default-root-container-orientation = "vertical";
+      default-root-container-orientation = "horizontal";
 
 
 
       gaps = {
         outer = {
-          top = 0;
-          bottom = 0;
-          left = 0;
-          right = 0;
+          top = 10;
+          bottom = 10;
+          left = 10;
+          right = 10;
         };
         inner = {
           horizontal = 10;
@@ -111,6 +113,60 @@
           check-further-callbacks = false;
           "if" = {
             app-id = "com.PhilippeRemy.OmniDiskSweeper";
+          };
+          run = [
+            "layout floating"
+          ];
+        }
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "com.apple.systempreferences";
+          };
+          run = [
+            "layout floating"
+          ];
+        }
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "com.apple.SystemPreferences";
+          };
+          run = [
+            "layout floating"
+          ];
+        }
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "com.apple.ActivityMonitor";
+          };
+          run = [
+            "layout floating"
+          ];
+        }
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "com.apple.calculator";
+          };
+          run = [
+            "layout floating"
+          ];
+        }
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "com.apple.Console";
+          };
+          run = [
+            "layout floating"
+          ];
+        }
+        {
+          check-further-callbacks = false;
+          "if" = {
+            app-id = "com.apple.DigitalColorMeter";
           };
           run = [
             "layout floating"
@@ -276,12 +332,20 @@
         alt-4 = "workspace 4";
         alt-5 = "workspace 5";
         alt-6 = "workspace 6";
+        
+        # Sequential workspace navigation
+        alt-left = "workspace prev";
+        alt-right = "workspace next";
 
         # Focus navigation (Vim-style)
         alt-h = "focus left";
         alt-j = "focus down";
         alt-k = "focus up";
         alt-l = "focus right";
+        
+        # Circular window navigation
+        alt-n = "focus next";
+        alt-p = "focus prev";
 
         # Move windows (Vim-style)
         alt-shift-h = "move left";
@@ -289,31 +353,39 @@
         alt-shift-k = "move up";
         alt-shift-l = "move right";
 
-        # Move windows to workspaces
+        # Move windows to workspaces (and follow)
         alt-shift-1 = [
           "move-node-to-workspace 1"
-
+          "workspace 1"
         ];
         alt-shift-2 = [
           "move-node-to-workspace 2"
-
+          "workspace 2"
         ];
         alt-shift-3 = [
           "move-node-to-workspace 3"
-
+          "workspace 3"
         ];
         alt-shift-4 = [
           "move-node-to-workspace 4"
-
+          "workspace 4"
         ];
         alt-shift-5 = [
           "move-node-to-workspace 5"
-
+          "workspace 5"
         ];
         alt-shift-6 = [
           "move-node-to-workspace 6"
-
+          "workspace 6"
         ];
+
+        # Monitor navigation
+        alt-comma = "focus-monitor left";
+        alt-period = "focus-monitor right";
+
+        # Move windows between monitors
+        alt-shift-comma = "move-node-to-monitor left";
+        alt-shift-period = "move-node-to-monitor right";
 
         # Window resizing (more intuitive)
         alt-ctrl-h = "resize width -50";     # Hacer ventana más estrecha
@@ -331,6 +403,20 @@
         # Layout controls
         alt-shift-space = "layout floating tiling";  # Toggle floating/tiling
         alt-slash = "layout horizontal vertical";     # Toggle orientation
+        alt-w = "layout accordion horizontal vertical";  # Accordion/tabbed layout
+        alt-e = "layout tiles";                       # Back to tiles
+        alt-shift-f = "fullscreen";                   # Toggle fullscreen
+        
+        # Window management
+        alt-shift-q = "close";                        # Close window
+        alt-shift-backslash = "flatten-workspace-tree";  # Flatten workspace
+        
+        # Splits manuales
+        alt-v = "split vertical";
+        alt-s = "split horizontal";
+        
+        # Config management
+        alt-shift-ctrl-r = "reload-config";
 
         # Join windows
         alt-leftSquareBracket = "join-with left";
@@ -371,6 +457,7 @@
 
         # Exit resize mode
         esc = "mode main";
+        enter = "mode main";
       };
 
     on-focus-changed = [
