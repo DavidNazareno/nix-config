@@ -15,8 +15,10 @@
   # Note: Zsh configuration (including macOS-specific plugins) is handled in common/home/modules/zsh.nix
 
   # Configuraciones específicas del usuario para Darwin
-  programs.git = {
-    userEmail = constants.user.email;
-    userName = constants.user.fullName;
+  programs.git.settings = {
+    user = {
+      email = constants.user.email;
+      name = constants.user.fullName;
+    };
   };
 }

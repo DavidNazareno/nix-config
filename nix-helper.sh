@@ -113,6 +113,8 @@ main() {
                 if confirm_action "Switch a nueva configuración"; then
                     execute_command "nix --extra-experimental-features 'nix-command flakes' build \".#darwinConfigurations.$HOSTNAME.system\"" "Build de la configuración"
                     if [ $? -eq 0 ]; then
+                        # Configurar safe.directory para root antes de ejecutar
+                        sudo git config --global --add safe.directory "$(pwd)"
                         execute_command "sudo ./result/sw/bin/darwin-rebuild switch --flake \".#$HOSTNAME\"" "Switch a nueva configuración"
                     fi
                 fi

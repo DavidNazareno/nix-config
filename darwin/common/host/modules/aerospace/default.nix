@@ -7,7 +7,7 @@
     settings = {
       after-login-command = [ ];
       after-startup-command = [
-        "workspace 1"  # Siempre empezar en workspace 1
+        "workspace 1" # Siempre empezar en workspace 1
       ];
 
       key-mapping.preset = "qwerty";
@@ -20,18 +20,16 @@
       default-root-container-layout = "tiles";
       default-root-container-orientation = "horizontal";
 
-
-
       gaps = {
         outer = {
-          top = 10;
-          bottom = 10;
-          left = 10;
-          right = 10;
+          top = 2;
+          bottom = 2;
+          left = 2;
+          right = 2;
         };
         inner = {
-          horizontal = 10;
-          vertical = 10;
+          horizontal = 2;
+          vertical = 2;
         };
       };
 
@@ -332,7 +330,7 @@
         alt-4 = "workspace 4";
         alt-5 = "workspace 5";
         alt-6 = "workspace 6";
-        
+
         # Sequential workspace navigation
         alt-left = "workspace prev";
         alt-right = "workspace next";
@@ -342,10 +340,10 @@
         alt-j = "focus down";
         alt-k = "focus up";
         alt-l = "focus right";
-        
-        # Circular window navigation
-        alt-n = "focus next";
-        alt-p = "focus prev";
+
+        # Circular window navigation (DFS traversal)
+        alt-n = "focus dfs-next";
+        alt-p = "focus dfs-prev";
 
         # Move windows (Vim-style)
         alt-shift-h = "move left";
@@ -388,10 +386,10 @@
         alt-shift-period = "move-node-to-monitor right";
 
         # Window resizing (more intuitive)
-        alt-ctrl-h = "resize width -50";     # Hacer ventana más estrecha
-        alt-ctrl-l = "resize width +50";     # Hacer ventana más ancha
-        alt-ctrl-j = "resize height +50";    # Hacer ventana más alta
-        alt-ctrl-k = "resize height -50";    # Hacer ventana más baja
+        alt-ctrl-h = "resize width -50"; # Hacer ventana más estrecha
+        alt-ctrl-l = "resize width +50"; # Hacer ventana más ancha
+        alt-ctrl-j = "resize height +50"; # Hacer ventana más alta
+        alt-ctrl-k = "resize height -50"; # Hacer ventana más baja
 
         # Smart resize (mantener el original también)
         alt-shift-minus = "resize smart -50";
@@ -401,20 +399,21 @@
         ctrl-cmd-shift-0 = "balance-sizes";
 
         # Layout controls
-        alt-shift-space = "layout floating tiling";  # Toggle floating/tiling
-        alt-slash = "layout horizontal vertical";     # Toggle orientation
-        alt-w = "layout accordion horizontal vertical";  # Accordion/tabbed layout
-        alt-e = "layout tiles";                       # Back to tiles
-        alt-shift-f = "fullscreen";                   # Toggle fullscreen
-        
+        alt-shift-space = "layout floating tiling"; # Toggle floating/tiling
+        alt-slash = "layout horizontal vertical"; # Toggle orientation
+        alt-w = "layout accordion horizontal vertical"; # Accordion/tabbed layout
+        alt-e = "layout tiles"; # Back to tiles
+        alt-shift-f = "fullscreen"; # Toggle fullscreen
+
         # Window management
-        alt-shift-q = "close";                        # Close window
-        alt-shift-backslash = "flatten-workspace-tree";  # Flatten workspace
-        
-        # Splits manuales
-        alt-v = "split vertical";
-        alt-s = "split horizontal";
-        
+        alt-shift-q = "close"; # Close window
+        alt-shift-backslash = "flatten-workspace-tree"; # Flatten workspace
+
+        # Splits manuales - DESHABILITADO: no funciona con enable-normalization-flatten-containers
+        # En su lugar, usa join-with (alt-[ y alt-]) para controlar la estructura
+        # alt-v = "split vertical";
+        # alt-s = "split horizontal";
+
         # Config management
         alt-shift-ctrl-r = "reload-config";
 
@@ -460,15 +459,15 @@
         enter = "mode main";
       };
 
-    on-focus-changed = [
-      "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
-    ];
+      on-focus-changed = [
+        "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
+      ];
 
-    exec-on-workspace-change = [
-      "/bin/zsh"
-      "-c"
-      "/usr/bin/osascript -e \"tell application id \\\"tracesOf.Uebersicht\\\" to refresh widget id \\\"simple-bar-index-jsx\\\"\""
-    ];
+      exec-on-workspace-change = [
+        "/bin/zsh"
+        "-c"
+        "/usr/bin/osascript -e \"tell application id \\\"tracesOf.Uebersicht\\\" to refresh widget id \\\"simple-bar-index-jsx\\\"\""
+      ];
 
     };
   };

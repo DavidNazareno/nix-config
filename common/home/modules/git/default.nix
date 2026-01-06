@@ -2,9 +2,8 @@
 {
   programs.git = {
     enable = true;
-    diff-so-fancy.enable = true;
     lfs.enable = true;
-    extraConfig = {
+    settings = {
       init = {
         defaultBranch = "main";
       };
@@ -15,7 +14,12 @@
     };
   };
 
-   programs.lazygit = {
-      enable = true;
-    };
+  programs.diff-so-fancy = {
+    enable = true;
+    enableGitIntegration = true;
+  };
+
+  programs.lazygit = {
+    enable = true;
+  };
 }
