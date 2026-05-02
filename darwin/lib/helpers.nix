@@ -26,14 +26,7 @@ in
             home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = { inherit inputs constants system unstablePkgs; };
             home-manager.users.${username} = { 
-              imports = [ ./../common/home/${username}.nix inputs.stylix.homeModules.stylix ]; 
-              # Configurar nixpkgs dentro de home-manager para evitar conflictos
-              nixpkgs.overlays = [
-                (final: prev: {
-                  nodejs = prev.nodejs_22;
-                  nodejs-slim = prev.nodejs-slim_22;
-                })
-              ];
+              imports = [ ./../common/home/${username}.nix inputs.stylix.homeModules.stylix ];
             };
         }
         inputs.nix-homebrew.darwinModules.nix-homebrew {

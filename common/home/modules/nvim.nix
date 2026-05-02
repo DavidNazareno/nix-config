@@ -1,7 +1,11 @@
 { lib, ... }:
 {
   # Habilitar neovim
-  programs.neovim.enable = true;
+  programs.neovim = {
+    enable = true;
+    withPython3 = false;
+    withRuby = false;
+  };
 
   home.activation.copyNvim = lib.hm.dag.entryAfter ["writeBoundary"] ''
     echo "Copying nvim configuration..."

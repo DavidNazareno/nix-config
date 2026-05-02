@@ -46,10 +46,6 @@ cbuild:
 capply:
   colmena apply
 
-# Update flake inputs to their latest revisions
-update:
-  nix flake update
-
 # Check flake configuration for errors
 check:
   @echo "Checking flake configuration..."
@@ -78,11 +74,16 @@ install-ubuntu:
 
 # Garbage collect old OS generations and remove stale packages from the nix store
 gc:
-  nix-collect-garbage -d
-  nix-collect-garbage --delete-older-than 7d
-  nix-store --gc
+  @for app in "Visual Studio Code" "Code" "VSCodium" "Zed" "Ghostty" "iTerm2"; do \
+    if pgrep -x "$$app" >/dev/null 2>&1; then \
+      echo "Close $$app before running GC; macOS may block deleting app bundles from /nix/store."; \
+      exit 1; \
+    fi; \
+  done
+  sudo nix-collect-garbage -d
+  sudo nix-collect-garbage --delete-older-than 7d
+  sudo nix-store --gc
 
 ## manual command for initial bootstrapping
 ## sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
 ## nix --extra-experimental-features 'nix-command flakes' run nixpkgs#just
-

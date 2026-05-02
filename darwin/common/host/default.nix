@@ -1,8 +1,4 @@
 { inputs, outputs, config, lib, hostname, system, username, pkgs, unstablePkgs, constants, ... }:
-let
-  inherit (inputs) nixpkgs nixpkgs-unstable;
-  customPackages = import ./packages/custom-packages { inherit pkgs; };
-in
 {
   imports = [
     # Módulos específicos de Darwin
@@ -10,9 +6,8 @@ in
     ./modules/aerospace/default.nix
     ./modules/borders/default.nix
     ./system-config.nix
-    
+
     # Paquetes específicos de Darwin
-    ./packages/appstore.nix
     ./packages/brew.nix
   ];
 
@@ -38,13 +33,10 @@ in
   environment.systemPackages = with pkgs; [
     ## Darwin-specific packages only
     # Los paquetes crossplatform ahora están en common/host/packages.nix
-    
+
     ## GUI packages (Darwin-specific)
     zsh-autopair
     jankyborders
-   
-    ## Custom packages (Darwin-specific)
-    customPackages.sshpilot
   ];
 
   fonts.packages = [

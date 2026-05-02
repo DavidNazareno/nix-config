@@ -4,15 +4,6 @@
     interactiveShellInit = ''
       if status is-interactive
           # Commands to run in interactive sessions can go here
-
-          # Install Fisher if not installed
-          if not functions -q fisher
-              curl -sL https://git.io/fisher | source
-              fisher install jorgebucaran/fisher
-          end
-
-          # Set Catppuccin Mocha as default theme
-          # fish_config theme choose "Catppuccin Mocha"
       end
 
       if test (uname) = Darwin

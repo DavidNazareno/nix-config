@@ -83,6 +83,7 @@
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
+    shellWrapperName = "y";
   };
 
   # Starship is configured in starship.nix module

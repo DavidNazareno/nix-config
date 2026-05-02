@@ -17,6 +17,7 @@
       "nowplaying-cli"
       "fonttools"
       "fzf"
+      "stripe/stripe-cli/stripe"
       "nvm"  # Node Version Manager
     ];
 
@@ -37,7 +38,6 @@
       "keka"
       "command-x"
       # --- COMMUNICATION ---
-      "wechat"                    # Chinese instant messaging
       "discord"                   # Gaming and community chat
       "whatsapp"                  # Instant messaging
 
@@ -48,6 +48,7 @@
       "medis"
       "dbngin"
       "github"
+      "codex"
       #"visual-studio-code"
       "zed"
       "dbeaver-community"

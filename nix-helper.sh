@@ -16,6 +16,15 @@ NC='\033[0m' # No Color
 
 # Obtener hostname
 HOSTNAME=$(hostname | cut -d "." -f 1)
+SUDO_KEEPALIVE_PID=""
+
+cleanup() {
+    if [ -n "$SUDO_KEEPALIVE_PID" ] && kill -0 "$SUDO_KEEPALIVE_PID" 2>/dev/null; then
+        kill "$SUDO_KEEPALIVE_PID" 2>/dev/null || true
+    fi
+}
+
+trap cleanup EXIT
 
 # Función para mostrar el banner
 show_banner() {
@@ -71,6 +80,35 @@ execute_command() {
     fi
 }
 
+# Solicitar sudo solo cuando sea necesario y mantener la sesión viva
+ensure_sudo() {
+    if sudo -v; then
+        if [ -z "$SUDO_KEEPALIVE_PID" ] || ! kill -0 "$SUDO_KEEPALIVE_PID" 2>/dev/null; then
+            while true; do
+                sudo -n true
+                sleep 60
+                kill -0 "$$" 2>/dev/null || exit
+            done >/dev/null 2>&1 &
+            SUDO_KEEPALIVE_PID=$!
+        fi
+    else
+        echo -e "${RED}❌ No se pudieron obtener permisos de administrador${NC}"
+        return 1
+    fi
+}
+
+# Ejecutar comandos que requieren privilegios
+execute_privileged_command() {
+    local cmd="$1"
+    local description="$2"
+
+    if ! ensure_sudo; then
+        return 1
+    fi
+
+    execute_command "$cmd" "$description"
+}
+
 # Función para confirmar acciones destructivas
 confirm_action() {
     local action="$1"
@@ -95,6 +133,36 @@ show_host_info() {
     echo
 }
 
+check_conflicting_apps() {
+    local has_conflict=0
+    local apps=(
+        "Visual Studio Code"
+        "Code"
+        "VSCodium"
+        "Zed"
+        "Ghostty"
+        "iTerm2"
+    )
+
+    for app in "${apps[@]}"; do
+        if pgrep -x "$app" >/dev/null 2>&1; then
+            if [ $has_conflict -eq 0 ]; then
+                echo -e "${YELLOW}⚠️  Hay aplicaciones abiertas que pueden bloquear el garbage collection:${NC}"
+                has_conflict=1
+            fi
+            echo "  - $app"
+        fi
+    done
+
+    if [ $has_conflict -eq 1 ]; then
+        echo
+        echo -e "${YELLOW}Cierra esas apps y vuelve a intentar el GC para evitar errores con /nix/store.${NC}"
+        return 1
+    fi
+
+    return 0
+}
+
 # Función principal
 main() {
     show_banner
@@ -113,9 +181,11 @@ main() {
                 if confirm_action "Switch a nueva configuración"; then
                     execute_command "nix --extra-experimental-features 'nix-command flakes' build \".#darwinConfigurations.$HOSTNAME.system\"" "Build de la configuración"
                     if [ $? -eq 0 ]; then
-                        # Configurar safe.directory para root antes de ejecutar
-                        sudo git config --global --add safe.directory "$(pwd)"
-                        execute_command "sudo ./result/sw/bin/darwin-rebuild switch --flake \".#$HOSTNAME\"" "Switch a nueva configuración"
+                        if ensure_sudo; then
+                            # Configurar safe.directory para root antes de ejecutar
+                            sudo git config --global --add safe.directory "$(pwd)"
+                            execute_command "sudo ./result/sw/bin/darwin-rebuild switch --flake \".#$HOSTNAME\"" "Switch a nueva configuración"
+                        fi
                     fi
                 fi
                 ;;
@@ -127,12 +197,16 @@ main() {
                 ;;
             5)
                 if confirm_action "Limpiar generaciones antiguas"; then
-                    execute_command "sudo nix-collect-garbage --delete-older-than 30d && sudo nix-store --gc" "Limpieza de generaciones"
+                    if check_conflicting_apps; then
+                        execute_privileged_command "sudo nix-collect-garbage --delete-older-than 30d && sudo nix-store --gc" "Limpieza de generaciones"
+                    fi
                 fi
                 ;;
             6)
                 if confirm_action "Garbage collection completo"; then
-                    execute_command "nix-collect-garbage -d && nix-collect-garbage --delete-older-than 7d && nix-store --gc" "Garbage collection"
+                    if check_conflicting_apps; then
+                        execute_privileged_command "sudo nix-collect-garbage -d && sudo nix-collect-garbage --delete-older-than 7d && sudo nix-store --gc" "Garbage collection"
+                    fi
                 fi
                 ;;
             7)

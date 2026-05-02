@@ -14,7 +14,6 @@
     ./modules/zellij.nix
     ./modules/fish.nix
     ./modules/claude.nix
-    ./modules/oil-scripts.nix
     ./modules/opencode.nix
   ];
 

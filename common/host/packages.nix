@@ -12,7 +12,6 @@ in
     redis                                                 # In-memory data structure store
 
     # === MONITORING & SYSTEM TOOLS ===
-    nixpkgs-unstable.legacyPackages.${system}.beszel    # Modern server monitoring dashboard
     btop                                                     # Resource monitor (htop alternative)
     fastfetch                                               # System information tool
     smartmontools                                           # Hard drive monitoring utilities
@@ -48,8 +47,6 @@ in
     lazygit                                                 # Terminal UI for git
     volta                                                   # JavaScript tool manager
     bash                                                    # Bourne Again Shell
-    unstablePkgs.yt-dlp                                     # YouTube downloader
-    unstablePkgs.get_iplayer                                # BBC iPlayer downloader
     unstablePkgs.colmena                                    # NixOS deployment tool
     comma                                                    # Run commands without installing
     hcloud                                                   # Hetzner Cloud CLI
@@ -91,11 +88,6 @@ in
     zsh                                                    # Z shell
     nushell                                                # Modern shell
 
-
-    # === PROPRIETARY SOFTWARE (requires allowUnfree) ===
-    vscode-extensions.ms-vscode-remote.remote-ssh          # VS Code remote SSH extension
-
-
     # === FONTS ===
     nerd-fonts.caskaydia-cove
     nerd-fonts.iosevka-term
@@ -104,5 +96,8 @@ in
     # === COMMENTED OUT / OPTIONAL ===
     # ansible                                              # IT automation platform
     # hugo                                                 # Static site generator
+    # beszel                                               # Optional monitoring tool; keep out of base system
+    # yt-dlp                                               # Heavy dependency chain; keep out of base system
+    # get_iplayer                                          # Optional media downloader
   ];
 }
