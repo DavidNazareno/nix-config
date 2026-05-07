@@ -95,10 +95,8 @@
     source = ./opencode/agents;
     recursive = true;
   };
-  home.file.".config/opencode/skills" = {
-    source = ./opencode/skills;
-    recursive = true;
-  };
+  home.file.".config/opencode/skills/git-workflow/SKILL.md".source = ./opencode/skills/git-workflow/SKILL.md;
+  home.file.".config/opencode/skills/spec-definition/SKILL.md".source = ./opencode/skills/spec-definition/SKILL.md;
   home.file.".opencode/config.json".source = ./opencode/runtime-config.json;
 
   # Add aliases for nushell (fish/zsh are defined in their shell modules)

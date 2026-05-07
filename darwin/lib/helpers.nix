@@ -16,6 +16,7 @@ in
         # commonModules viene del flake.nix y contiene la configuración común de TODAS las plataformas
         
         # Importar configuración específica de Darwin
+        inputs.stylix.darwinModules.stylix
         ./../common/host/default.nix
         # Importar configuración específica del host (dnz-mac-mini, etc.)
         customConf
@@ -26,7 +27,7 @@ in
             home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = { inherit inputs constants system unstablePkgs; };
             home-manager.users.${username} = { 
-              imports = [ ./../common/home/${username}.nix inputs.stylix.homeModules.stylix ];
+              imports = [ ./../common/home/${username}.nix ];
             };
         }
         inputs.nix-homebrew.darwinModules.nix-homebrew {

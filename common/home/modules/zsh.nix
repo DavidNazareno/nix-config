@@ -43,9 +43,29 @@
       # --------------------------
       # 1) COMPINIT + CACHE
       # --------------------------
+      # Homebrew can leave dangling completion symlinks behind after app
+      # uninstall/moves (for example OrbStack). Remove them before compinit
+      # so completion initialization does not crash on broken files.
+      local brew_zsh_site_functions="/opt/homebrew/share/zsh/site-functions"
+      local zcompdump_path="$${XDG_CACHE_HOME:-$${HOME}/.cache}/zsh/zcompdump-$${ZSH_VERSION}"
+      local pruned_brew_completion=0
+
+      if [[ -d "$brew_zsh_site_functions" ]]; then
+        local completion_file
+        for completion_file in "$brew_zsh_site_functions"/_*(N); do
+          if [[ -L "$completion_file" && ! -e "$completion_file" ]]; then
+            rm -f -- "$completion_file"
+            pruned_brew_completion=1
+          fi
+        done
+      fi
+
+      if (( pruned_brew_completion )); then
+        rm -f -- "$zcompdump_path"
+      fi
+
       autoload -Uz compinit
-      # Use a directory in .cache or as you prefer
-      compinit -d "$${XDG_CACHE_HOME:-$${HOME}/.cache}/zsh/zcompdump-$${ZSH_VERSION}"
+      compinit -d "$zcompdump_path"
 
       # --------------------------
       # 2) EDITOR

@@ -3,6 +3,14 @@
   "theme": "gentleman",
   "autoupdate": true,
   "mcp": {
+    "cavemem": {
+      "type": "local",
+      "command": [
+        "/opt/homebrew/opt/nvm/versions/node/v24.15.0/bin/cavemem",
+        "mcp"
+      ],
+      "enabled": true
+    },
     "context7": {
       "type": "remote",
       "url": "https://mcp.context7.com/mcp",
