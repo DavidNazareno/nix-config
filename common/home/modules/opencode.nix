@@ -91,8 +91,16 @@
 
   home.file.".config/opencode/opencode.json".source = ./opencode/opencode.json;
   home.file.".config/opencode/themes/gentleman.json".source = ./opencode/themes/gentleman.json;
+  home.file.".config/opencode/agents" = {
+    source = ./opencode/agents;
+    recursive = true;
+  };
+  home.file.".config/opencode/skills" = {
+    source = ./opencode/skills;
+    recursive = true;
+  };
+  home.file.".opencode/config.json".source = ./opencode/runtime-config.json;
 
-  # Add aliases for fish and nushell (zsh is in zsh.nix to avoid conflicts)
-  programs.fish.shellAliases.opencode-config = "nvim ~/.config/opencode/opencode.json";
+  # Add aliases for nushell (fish/zsh are defined in their shell modules)
   programs.nushell.shellAliases.opencode-config = "nvim ~/.config/opencode/opencode.json";
 }

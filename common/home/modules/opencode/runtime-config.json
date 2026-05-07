@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "cavemem": {
+      "command": "/opt/homebrew/Cellar/nvm/0.40.4/versions/node/v24.15.0/bin/node",
+      "args": [
+        "/opt/homebrew/Cellar/nvm/0.40.4/versions/node/v24.15.0/lib/node_modules/cavemem/dist/index.js",
+        "mcp"
+      ]
+    }
+  }
+}
