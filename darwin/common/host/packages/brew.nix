@@ -19,6 +19,10 @@
       "fzf"
       "stripe/stripe-cli/stripe"
       "nvm"  # Node Version Manager
+      {
+        name = "ollama";
+        restart_service = "changed";
+      }
     ];
 
     # === HOMEBREW TAPS ===
