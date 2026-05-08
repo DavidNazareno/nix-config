@@ -24,7 +24,6 @@ in
             networking.hostName = hostname;
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = { inherit inputs constants system unstablePkgs; };
             home-manager.users.${username} = { 
               imports = [ ./../common/home/${username}.nix ];
