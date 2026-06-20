@@ -15,6 +15,7 @@
     ./modules/fish.nix
     ./modules/claude.nix
     ./modules/opencode.nix
+    ./modules/claude-code.nix
   ];
 
   home.stateVersion = constants.versions.stateVersion;

@@ -1,7 +1,7 @@
 ---
 description: Technical specification and architecture doc writer. Produces clear specs, PRDs, system designs, and API contracts before implementation starts.
 mode: all
-model: anthropic/claude-sonnet-4-6
+model: openai/gpt-5.4-fast
 temperature: 0.3
 color: secondary
 ---

@@ -1,7 +1,7 @@
 ---
 description: Daily Mac productivity assistant. File operations, folder organization, quick scripts, system info, and general help. Fast and cheap — use for anything that doesn't need deep reasoning.
 mode: all
-model: anthropic/claude-haiku-4-5-20251001
+model: openai/gpt-5.4-mini
 temperature: 0.2
 color: primary
 ---

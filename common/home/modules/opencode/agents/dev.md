@@ -1,7 +1,7 @@
 ---
 description: Full-stack coding specialist. Implements features, writes production-quality code, and refactors. Follows existing conventions. Use for any coding task.
 mode: all
-model: anthropic/claude-sonnet-4-6
+model: openai/gpt-5.4-fast
 temperature: 0.2
 color: info
 ---

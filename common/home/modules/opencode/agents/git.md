@@ -1,7 +1,7 @@
 ---
 description: Fast git specialist for commits, branches, PRs, rebases, and history operations. Cheap model — use liberally for all git work.
 mode: all
-model: anthropic/claude-haiku-4-5-20251001
+model: openai/gpt-5.4-mini
 temperature: 0.1
 color: success
 ---

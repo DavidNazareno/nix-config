@@ -1,7 +1,7 @@
 ---
 description: Systematic debugging specialist. Root cause analysis, error tracing, and fixing broken code. Use when something is broken and you don't know why.
 mode: all
-model: anthropic/claude-sonnet-4-6
+model: openai/gpt-5.4-fast
 temperature: 0.1
 color: error
 ---

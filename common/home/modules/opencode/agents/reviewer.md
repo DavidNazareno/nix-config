@@ -1,7 +1,7 @@
 ---
 description: Code review specialist. Checks correctness, security, performance, and maintainability. Run after any non-trivial implementation.
 mode: all
-model: anthropic/claude-sonnet-4-6
+model: openai/gpt-5.4-fast
 temperature: 0.1
 color: warning
 ---
