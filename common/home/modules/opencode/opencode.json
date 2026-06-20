@@ -1,33 +1,27 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "gentleman",
-  "autoupdate": true,
-  "provider": {
-    "ollama": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "Ollama (local)",
-      "options": {
-        "baseURL": "http://localhost:11434/v1"
-      },
-      "models": {
-        "gemma4:e2b": {
-          "name": "Gemma 4 E2B (local)"
-        }
-      }
-    }
-  },
+  "autoupdate": false,
+  "model": "anthropic/claude-sonnet-4-6",
   "mcp": {
-    "cavemem": {
-      "type": "local",
-      "command": [
-        "/opt/homebrew/opt/nvm/versions/node/v24.15.0/bin/cavemem",
-        "mcp"
-      ],
-      "enabled": true
-    },
     "context7": {
       "type": "remote",
       "url": "https://mcp.context7.com/mcp",
+      "enabled": true
+    },
+    "fetch": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-fetch"],
+      "enabled": true
+    },
+    "headroom": {
+      "type": "local",
+      "command": ["headroom", "mcp", "serve"],
+      "enabled": true
+    },
+    "playwright": {
+      "type": "local",
+      "command": ["npx", "@playwright/mcp@latest"],
       "enabled": true
     }
   }

@@ -1,18 +1,13 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, unstablePkgs, ... }:
 
 {
-  # Install GitHub CLI and tools for Copilot authentication and OpenCode installation
+  # OpenCode via nixpkgs-unstable (auto-updated, no curl scripts)
   home.packages = [
+    unstablePkgs.opencode
     pkgs.gh
-    pkgs.curl
-    pkgs.gawk
-    pkgs.gnutar
-    pkgs.gzip
-    pkgs.coreutils
-    pkgs.unzip
   ];
 
-  # Setup GitHub CLI
+  # GitHub CLI
   programs.gh = {
     enable = true;
     settings = {
@@ -20,75 +15,14 @@
     };
   };
 
-  # Add OpenCode to PATH for all shells
-  home.sessionPath = [
-    "$HOME/.opencode/bin"
-  ];
+  # Install headroom (context compression MCP — 60-95% token savings on tool outputs)
+  home.activation.installHeadroom = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if ! command -v headroom &>/dev/null; then
+      $DRY_RUN_CMD ${pkgs.uv}/bin/uv tool install "headroom-ai[mcp,ml]" --quiet || true
+    fi
+  '';
 
-  # Create OpenCode installation script for manual use
-  home.file."bin/install-opencode" = {
-    text = ''
-      #!/usr/bin/env bash
-      set -e
-
-      OPENCODE_DIR="$HOME/.opencode"
-      OPENCODE_BIN="$OPENCODE_DIR/bin/opencode"
-
-      # Create required cache directories
-      mkdir -p "$HOME/.cache/nvim/opencode"
-
-      # Set PATH to include all required tools
-      export PATH="${pkgs.unzip}/bin:${pkgs.curl}/bin:${pkgs.gawk}/bin:${pkgs.gnutar}/bin:${pkgs.gzip}/bin:${pkgs.coreutils}/bin:${pkgs.gh}/bin:$PATH"
-
-      # Check if OpenCode is already installed and working
-      if [ -f "$OPENCODE_BIN" ] && "$OPENCODE_BIN" --version &>/dev/null; then
-        INSTALLED_VERSION=$("$OPENCODE_BIN" --version 2>/dev/null | head -n1 || echo "unknown")
-        echo "✅ OpenCode already installed: $INSTALLED_VERSION"
-        read -p "Do you want to reinstall/update? (y/N): " -n 1 -r
-        echo
-        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-          echo "Skipping OpenCode installation"
-        else
-          echo "🚀 Reinstalling OpenCode..."
-          curl -fsSL https://opencode.ai/install | bash 
-          if [ -f "$OPENCODE_BIN" ]; then
-            INSTALLED_VERSION=$("$OPENCODE_BIN" --version 2>/dev/null | head -n1 || echo "unknown")
-            echo "✅ OpenCode v$INSTALLED_VERSION installed successfully!"
-          else
-            echo "❌ OpenCode installation failed"
-            exit 1
-          fi
-        fi
-      else
-        echo "🚀 Installing latest OpenCode..."
-        curl -fsSL https://opencode.ai/install | bash 
-        if [ -f "$OPENCODE_BIN" ]; then
-          INSTALLED_VERSION=$("$OPENCODE_BIN" --version 2>/dev/null | head -n1 || echo "unknown")
-          echo "✅ OpenCode v$INSTALLED_VERSION installed successfully!"
-        else
-          echo "❌ OpenCode installation failed"
-          exit 1
-        fi
-      fi
-
-      # Install GitHub Copilot extension if not present
-      if gh extension list 2>/dev/null | grep -q "copilot"; then
-        echo "✅ GitHub Copilot extension already installed"
-      else
-        echo "📦 Installing GitHub Copilot extension..."
-        if gh extension install github/gh-copilot 2>/dev/null; then
-          echo "✅ GitHub Copilot extension installed!"
-        else
-          echo "⚠️  GitHub Copilot extension installation skipped (may already be installed)"
-        fi
-      fi
-      echo ""
-      echo "🎉 OpenCode setup complete!"
-      echo "Usage: opencode | opencode-config | gh auth status"
-    '';
-    executable = true;
-  };
-
+  # Config files
   home.file.".config/opencode/opencode.json".source = ./opencode/opencode.json;
   home.file.".config/opencode/themes/gentleman.json".source = ./opencode/themes/gentleman.json;
   home.file.".config/opencode/agents" = {
@@ -99,8 +33,8 @@
     source = ./opencode/skills;
     recursive = true;
   };
-  home.file.".opencode/config.json".source = ./opencode/runtime-config.json;
 
-  # Add aliases for nushell (fish/zsh are defined in their shell modules)
+  # Shell aliases
   programs.nushell.shellAliases.opencode-config = "nvim ~/.config/opencode/opencode.json";
+  programs.fish.shellAliases.oc = "opencode";
 }
